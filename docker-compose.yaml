@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  manipulator:
+    build: manipulator
+    container_name: manipulator
+    volumes:
+      - ./manipulator/logs:/app/logs
+      - ./config.json:/config.json
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  controller:
+    build: controller
+    container_name: controller
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./config.json:/config.json
+    depends_on:
+      - manipulator
+
+  sensor:
+    build: sensor
+    container_name: sensor
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./config.json:/config.json
+    depends_on:
+      - manipulator
+      - controller

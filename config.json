@@ -1,0 +1,18 @@
+
+[
+    {   
+        "component": "manipulator",
+        "host": "manipulator",
+        "port": 8002
+    },
+    {
+        "component": "controller",
+        "host": "controller",
+        "port": 8001
+    },
+    {
+        "component": "sensor",
+        "host": "sensor",
+        "port": 8000
+    }
+]
